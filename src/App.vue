@@ -1,11 +1,24 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/notas">Notas</router-link> |
+    <button @click="cerrarSesion">Cerrar sesion</button>
   </div>
   <router-view/>
 </template>
-
+<script>
+  import {mapActions} from 'vuex'
+export default {
+  methods:{
+    //vienen del store index.js
+    ...mapActions(['leerToken', 'cerrarSesion'])
+  },
+  created(){
+    this.leerToken()
+  }
+}
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
