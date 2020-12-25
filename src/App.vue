@@ -3,6 +3,7 @@
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> |
     <router-link to="/notas">Notas</router-link> |
+   
     <button @click="cerrarSesion">Cerrar sesion</button>
   </div>
   <router-view/>

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="Vue logo" src="../assets/logo.jpg">
     <h1>Login</h1>
     <form @submit.prevent="login(usuario)">
       <!-- v-model relaciona los input con la data que tenemos en vue-->

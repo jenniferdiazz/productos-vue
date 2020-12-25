@@ -19,7 +19,7 @@ const routes = [
     name: 'Notas',
     component: () => import(/* webpackChunkName: "about" */ '../views/Notas.vue'),
     
-  }
+  },
 ]
 
 const router = createRouter({
