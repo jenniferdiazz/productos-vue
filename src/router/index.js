@@ -9,6 +9,13 @@ const routes = [
     component: Home
   },
   {
+    path: '/registro',
+    name: 'Registro',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue'),
+    
+    
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
@@ -18,6 +25,7 @@ const routes = [
     path: '/notas',
     name: 'Notas',
     component: () => import(/* webpackChunkName: "about" */ '../views/Notas.vue'),
+    meta:{rutaProtegida:true}
     
   },
 ]

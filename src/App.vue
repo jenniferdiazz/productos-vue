@@ -1,10 +1,13 @@
 <template>
   <div id="nav">
+    
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/notas">Notas</router-link> |
-   
+    <router-link to="/registro">Registrarse</router-link> |
+
+    <router-link to="/notas">Deseos</router-link> |
+
     <button @click="cerrarSesion">Cerrar sesion</button>
+    
   </div>
   <router-view/>
 </template>

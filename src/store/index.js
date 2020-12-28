@@ -27,12 +27,15 @@ export default createStore({
           //viene la respuesta de nuestra base de datos
           const resDB = await res.json()
           console.log(resDB)
+          
           //el commit llama una mutacion, lo segundo es lo que le enviaremos
           commit('setToken', resDB.data.token)
           //para almaacenar las credenciales usamos localstorage
           localStorage.setItem('token2', resDB.data.token)
+          alert("Ha iniciado sesión")
       }catch(error){
         console.log(error)
+        alert("Ha ocurrido un error")
 
       }
 
@@ -49,6 +52,8 @@ export default createStore({
     cerrarSesion({commit}){
       localStorage.removeItem('token')
       commit('setToken', null)
+      alert("Ha cerrado sesión")
+
     }
   },
   modules: {

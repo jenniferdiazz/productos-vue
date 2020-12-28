@@ -8,7 +8,10 @@
       <input type="password" placeholder="password" v-model="usuario.password">
       <button type="submit">Acceder</button>
     </form>
-    {{usuario}}
+ 
+    
+
+
   </div>
 </template>
 
@@ -21,7 +24,7 @@ export default {
   data(){
     return{
       usuario:{
-        email:'prueba2@prueba.com',
+        email:'karina@juanifghto.com',
         password:'123123'
       }
     }

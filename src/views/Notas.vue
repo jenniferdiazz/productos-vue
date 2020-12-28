@@ -2,6 +2,7 @@
   <div class="container">
     
     <h1>Fuente de los Deseos</h1>
+     
     <div>
         <img src="../assets/fuente.jpg">
     </div>
@@ -14,29 +15,39 @@
     @dismiss-count-down="countDownChanged"
     >
     {{mensaje.texto}}
-    {{token}}
+   
     </div>
     <form @submit.prevent="editarNota(notaEditar)" v-if="!agregar">
             <h3 class="text-center">Pide un deseo</h3>
-            <input type="text" class="form-control my-2" v-model="notaEditar.name">
-            <input type="text" class="form-control my-2" v-model="notaEditar.description">
+            <input type="text" class="form-control my-2" required v-model="notaEditar.name">
+            <input type="text" class="form-control my-2"  required v-model="notaEditar.description">
             <button type="submit" class="btn-warning btn-block btn-success">Confirmar</button>  
             <button type="submit" class="btn-sm btn-block btn-danger" @click="agregar=true">Cancelar</button>
                       
     </form>
-    <div>
+    <div class="row">
     <form @submit.prevent="agregarNota()" v-if="agregar">
             <h3 class="text-center">Pide un deseo</h3>
             <div class="text-center">
             <input type="text" placeholder="Ingrese el Nombre" class="form-control m-2" v-model="nota.name">
             <textarea type="text" placeholder="Ingrese la descripcion" class="form-control m-2" v-model="nota.description" rows="3"></textarea>
-            <button type="submit" class="btn btn-block btn-success"  @click="darMensaje()">Agregar</button>
+           <label for="">Lanzar (Pesos)</label>
+     <!-- Example single danger button -->
+<select class="form-select" aria-label="Default select example">
+  <option selected>$100</option>
+  <option value="1">$500</option>
+  <option value="2">$1000</option>
+  <option value="3">$10000</option>
+</select>
+<br>
+            
+            <button type="submit" class="btn btn-block btn-success"  @click="darMensaje()">Pedir Deseo</button>
             
             </div>
     </form>
     </div>
     <br>
-    <div><button type="button" class="btn btn-warning btn-block" @click="activarLista()">Ver lista</button></div>
+    <div><button type="button" class="btn btn-warning btn-block" @click="activarLista()">Ver Deseos</button></div>
     <table class="table" v-if="!ver">
   <thead>
     <tr>
@@ -87,6 +98,7 @@
 
 <script>
 import {mapState} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
   data(){
@@ -116,14 +128,12 @@ export default {
 ],
     }
   },
-  created(){
-      this.listarNotas();
-      this.datosProtegidos();
-  },
    computed:{
     ...mapState(['token'])
   },
   methods:{
+    //...mapActions(cerrarSesion),
+     
     async datosProtegidos(){
       try{
         //por defecto la solicitud es get
@@ -249,7 +259,13 @@ export default {
     
 
             
-  }
+  },
+
+  created(){
+    this.datosProtegidos();
+      this.listarNotas();
+      
+  },
 
 };
 
