@@ -1,11 +1,25 @@
 <template>
   <div class="container">
-    
-    <h1>Fuente de los Deseos</h1>
-     
-    <div>
-        
-    </div>
+    <div class="row" >
+
+    <h1>tienda</h1>
+            <div class="col-lg-3" v-for="producto in notas" :key="producto.id">
+              <div class="list">
+                  <img :src="producto.photo" alt="" srcset=""  width="200" height="200" >
+                  <div>{{producto.name}}</div>
+                  <div>{{producto.price}}</div>
+                  <div>
+                    <div style="display: inline"></div>
+
+                    <div style="display: inline"><button @click="agregarCarro(item._id)"><img src="../../dist/img/carro.png" alt="" srcset=""  width="30" height="30"></button></div>
+                  </div>
+              </div>
+            </div>
+            
+   
+ </div>
+        <button type="button" class="btn btn-primary">Primary</button>
+    <!-- </div>
     <div class="alert alert-primary" 
     role="alert" 
     :show="dismissCountDown"
@@ -16,7 +30,7 @@
     >
     {{mensaje.texto}}
    
-    </div>
+    </div> -->
     <!-- <form @submit.prevent="editarNota(notaEditar)" v-if="!agregar">
             <h3 class="text-center">Pide un deseo</h3>
             <input type="text" class="form-control my-2" required v-model="notaEditar.name">
@@ -46,7 +60,7 @@
             </div>
     </form> -->
     <!-- </div> -->
-    <br>
+    <!-- <br>
 
     <table class="table">
   <thead>
@@ -54,23 +68,25 @@
         
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Accion</th>
+      <th scope="col">Icon</th>
+      
     </tr>
   </thead>
   <tbody>
     <tr v-for="(item,index) in notas" :key="index">
-      
-        
+
+      <img :src="image" alt="no hay imagen">      
        <td>{{item.name}}</td>
        <td>{{item.description}}</td>
-       <td>{{item.date}}</td>
+       <td><img src={{item.photo}} alt="" srcset=""></td>
+       
+
        <td><button type="button" class="btn btn-warning" @click="activarEdicion(item._id)">Actualizar</button></td>
          <td><button type="button" class="btn btn-danger" @click="eliminarNota(item._id)">Eliminar</button></td>
     </tr>
    
   </tbody>
-</table>
+</table> -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -267,3 +283,8 @@ export default {
 };
 
 </script>
+
+
+<style>
+    @import '../css/product_list.css';
+</style>
