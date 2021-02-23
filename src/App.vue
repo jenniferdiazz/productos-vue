@@ -4,8 +4,6 @@
     <router-link to="/">Home</router-link> |
     <!-- <router-link to="/registro">Registrarse</router-link> | -->
 
-    <router-link to="/notas">Deseos</router-link> |
-
     <!-- <button @click="cerrarSesion">Cerrar sesion</button>
      -->
   </div>
