@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
+import Notas from '../views/Notas.vue'
 import store from '../store'
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    name: 'Notas',
+    component: Notas
   },
   {
     path: '/registro',
@@ -21,13 +22,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     meta:{rutaProtegida:true}
   },
-  {
-    path: '/notas',
-    name: 'Notas',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Notas.vue'),
-    meta:{rutaProtegida:true}
+  // {
+  //   path: '/notas',
+  //   name: 'Notas',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Notas.vue'),
+  //   meta:{rutaProtegida:true}
     
-  },
+  // },
 ]
 
 const router = createRouter({

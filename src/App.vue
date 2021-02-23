@@ -2,12 +2,12 @@
   <div id="nav">
     
     <router-link to="/">Home</router-link> |
-    <router-link to="/registro">Registrarse</router-link> |
+    <!-- <router-link to="/registro">Registrarse</router-link> | -->
 
     <router-link to="/notas">Deseos</router-link> |
 
-    <button @click="cerrarSesion">Cerrar sesion</button>
-    
+    <!-- <button @click="cerrarSesion">Cerrar sesion</button>
+     -->
   </div>
   <router-view/>
 </template>

@@ -13,7 +13,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css"
 
 createApp(App).use(store).use(router).use(VueAxios, axios).mount('#app')
 
-axios.defaults.baseURL= 'http://localhost:3001/api'
+//axios.defaults.baseURL= 'http://localhost:3001/api'
+axios.defaults.baseURL= 'http://sva.talana.com:8000/api'
 
 //axios.defaults.baseURL= 'https://api-node-escala.herokuapp.com/api'
 

@@ -4,7 +4,7 @@
     <h1>Fuente de los Deseos</h1>
      
     <div>
-        <img src="../assets/fuente.jpg">
+        
     </div>
     <div class="alert alert-primary" 
     role="alert" 
@@ -17,7 +17,7 @@
     {{mensaje.texto}}
    
     </div>
-    <form @submit.prevent="editarNota(notaEditar)" v-if="!agregar">
+    <!-- <form @submit.prevent="editarNota(notaEditar)" v-if="!agregar">
             <h3 class="text-center">Pide un deseo</h3>
             <input type="text" class="form-control my-2" required v-model="notaEditar.name">
             <input type="text" class="form-control my-2"  required v-model="notaEditar.description">
@@ -32,23 +32,23 @@
             <input type="text" placeholder="Ingrese el Nombre" class="form-control m-2" v-model="nota.name">
             <textarea type="text" placeholder="Ingrese la descripcion" class="form-control m-2" v-model="nota.description" rows="3"></textarea>
            <label for="">Lanzar (Pesos)</label>
-     <!-- Example single danger button -->
-<select class="form-select" aria-label="Default select example">
+      Example single danger button -->
+<!-- <select class="form-select" aria-label="Default select example">
   <option selected>$100</option>
   <option value="1">$500</option>
   <option value="2">$1000</option>
   <option value="3">$10000</option>
 </select>
-<br>
+<br> -->
             
-            <button type="submit" class="btn btn-block btn-success"  @click="darMensaje()">Pedir Deseo</button>
+            <!-- <button type="submit" class="btn btn-block btn-success"  @click="darMensaje()">Pedir Deseo</button>
             
             </div>
-    </form>
-    </div>
+    </form> -->
+    <!-- </div> -->
     <br>
-    <div><button type="button" class="btn btn-warning btn-block" @click="activarLista()">Ver Deseos</button></div>
-    <table class="table" v-if="!ver">
+
+    <table class="table">
   <thead>
     <tr>
         
@@ -129,30 +129,30 @@ export default {
     }
   },
    computed:{
-    ...mapState(['token'])
+    //...mapState(['token'])
   },
   methods:{
     //...mapActions(cerrarSesion),
      
-    async datosProtegidos(){
-      try{
-        //por defecto la solicitud es get
-        const res = await fetch('http://localhost:3001/api/admin',{
-          headers:{
-             'Content-Type': 'application/json',
-             //esto lee del servidor
-            'auth-token': this.token
-          }
-        })
-        const dataDB = await res.json()
-        console.log(dataDB)
+    // async datosProtegidos(){
+    //   try{
+    //     //por defecto la solicitud es get
+    //     const res = await fetch('http://localhost:3001/api/admin',{
+    //       headers:{
+    //          'Content-Type': 'application/json',
+    //          //esto lee del servidor
+    //         'auth-token': this.token
+    //       }
+    //     })
+    //     const dataDB = await res.json()
+    //     console.log(dataDB)
 
-      }catch(error){
-        console.log(error)
-      }
-    },
+    //   }catch(error){
+    //     console.log(error)
+    //   }
+    // },
     listarNotas(){
-        this.axios.get('/nota')
+        this.axios.get('/product')
         .then((response)=>{
             this.notas= response.data;
         })
@@ -160,12 +160,12 @@ export default {
             console.log('error'+e)
         })
     },
-    countDownChanged(dissmissCountDown){
-        this.dismissCountDown = dismissCountDown
-    },
-    showAlert(){
-        this.dismissCountDown = this.dismisSecs
-    },
+  //   countDownChanged(dissmissCountDown){
+  //       this.dismissCountDown = dismissCountDown
+  //   },
+  //   showAlert(){
+  //       this.dismissCountDown = this.dismisSecs
+  //   },
     eliminarNota(id){
          this.axios.delete(`nota/${id}`)
         .then(res=>{
@@ -241,11 +241,7 @@ export default {
             })
 
     },
-    activarLista(){
-        this.ver=!this.ver
-        
-
-    },
+   
     darMensaje(){
       
         var limite= this.frase.length
@@ -259,10 +255,11 @@ export default {
     
 
             
+  
   },
 
   created(){
-    this.datosProtegidos();
+    // this.datosProtegidos();
       this.listarNotas();
       
   },
