@@ -9,19 +9,19 @@ const routes = [
     name: 'Notas',
     component: Notas
   },
-  {
-    path: '/registro',
-    name: 'Registro',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue'),
+  // {
+  //   path: '/registro',
+  //   name: 'Registro',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Registro.vue'),
     
     
-  },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta:{rutaProtegida:true}
-  },
+  // },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  //   meta:{rutaProtegida:true}
+  // },
   // {
   //   path: '/notas',
   //   name: 'Notas',

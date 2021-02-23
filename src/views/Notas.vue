@@ -1,4 +1,24 @@
 <template>
+
+<transition name="fade">
+  <div class="modal-overlay" v-if="showModal" style="  background-color: rgba(255,255,255,0.9); border: 3px solid black">
+    <div>
+      <button type="button" class="btn btn-danger" @click="showModal = false">Cerrar</button>
+    <h1>Producto agregado</h1>
+    <p>Contenido</p>
+             <img :src="producto.photo" alt="" srcset=""  width="200" height="200" >
+             <div>{{producto.name}}</div>
+             <div>{{producto.code}}</div>
+             <div>{{producto.price}}</div>
+             <div>cantidad : 1</div>
+             <div>{{producto.description}}</div>
+    </div>         
+     
+    <button type="button" class="btn btn-warning btn-block" @click="showModal = false">Seguir comprando</button>
+    <button type="button" class="btn btn-success btn-block" @click="showModal = false">Agregar al Carro</button>
+    
+  </div>
+</transition>
   <div class="container">
     <div class="row" >
 
@@ -11,7 +31,7 @@
                   <div>
                     <div style="display: inline"></div>
 
-                    <div style="display: inline"><button @click="agregarCarro(item._id)"><img src="../../dist/img/carro.png" alt="" srcset=""  width="30" height="30"></button></div>
+                    <div style="display: inline"><button @click="obtenerProducto(producto)"><img src="../../dist/img/carro.png" alt="" srcset=""  width="30" height="30"></button></div>
                   </div>
               </div>
             </div>
@@ -19,94 +39,9 @@
    
  </div>
         <button type="button" class="btn btn-primary">Primary</button>
-    <!-- </div>
-    <div class="alert alert-primary" 
-    role="alert" 
-    :show="dismissCountDown"
-    dismissible
-    :variant="mensaje.color"
-    @dismissed="dismissCountDown=0"
-    @dismiss-count-down="countDownChanged"
-    >
-    {{mensaje.texto}}
    
-    </div> -->
-    <!-- <form @submit.prevent="editarNota(notaEditar)" v-if="!agregar">
-            <h3 class="text-center">Pide un deseo</h3>
-            <input type="text" class="form-control my-2" required v-model="notaEditar.name">
-            <input type="text" class="form-control my-2"  required v-model="notaEditar.description">
-            <button type="submit" class="btn-warning btn-block btn-success">Confirmar</button>  
-            <button type="submit" class="btn-sm btn-block btn-danger" @click="agregar=true">Cancelar</button>
-                      
-    </form>
-    <div class="row">
-    <form @submit.prevent="agregarNota()" v-if="agregar">
-            <h3 class="text-center">Pide un deseo</h3>
-            <div class="text-center">
-            <input type="text" placeholder="Ingrese el Nombre" class="form-control m-2" v-model="nota.name">
-            <textarea type="text" placeholder="Ingrese la descripcion" class="form-control m-2" v-model="nota.description" rows="3"></textarea>
-           <label for="">Lanzar (Pesos)</label>
-      Example single danger button -->
-<!-- <select class="form-select" aria-label="Default select example">
-  <option selected>$100</option>
-  <option value="1">$500</option>
-  <option value="2">$1000</option>
-  <option value="3">$10000</option>
-</select>
-<br> -->
-            
-            <!-- <button type="submit" class="btn btn-block btn-success"  @click="darMensaje()">Pedir Deseo</button>
-            
-            </div>
-    </form> -->
-    <!-- </div> -->
-    <!-- <br>
-
-    <table class="table">
-  <thead>
-    <tr>
-        
-      <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Icon</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="(item,index) in notas" :key="index">
-
-      <img :src="image" alt="no hay imagen">      
-       <td>{{item.name}}</td>
-       <td>{{item.description}}</td>
-       <td><img src={{item.photo}} alt="" srcset=""></td>
-       
-
-       <td><button type="button" class="btn btn-warning" @click="activarEdicion(item._id)">Actualizar</button></td>
-         <td><button type="button" class="btn btn-danger" @click="eliminarNota(item._id)">Eliminar</button></td>
-    </tr>
-   
-  </tbody>
-</table> -->
 <!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
   </div>
 
 
@@ -119,6 +54,9 @@ import {mapActions} from 'vuex'
 export default {
   data(){
     return{
+      productoId: 0,
+      producto:"",
+      showModal : false,
       notas:[],
       mensaje:{color:'success', texto:''},
       dismessecs:3,
@@ -148,6 +86,13 @@ export default {
     //...mapState(['token'])
   },
   methods:{
+     obtenerProducto(producto){
+        
+          
+          this.producto=producto
+          console.log(this.producto)
+          this.showModal=true
+      },
     //...mapActions(cerrarSesion),
      
     // async datosProtegidos(){
